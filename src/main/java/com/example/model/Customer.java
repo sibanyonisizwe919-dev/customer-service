@@ -1,20 +1,65 @@
 package com.example.model;
 
-/**
- * Immutable customer DTO — the "data" half of the Model layer.
- *
- * A record gives you the canonical constructor, accessors (customer.email()),
- * equals/hashCode/toString for free. JSON-B serializes the components to JSON
- * automatically — e.g. {"uniqueCustomerId":"CUST-001", ...}.
- *
- * If you later add JPA, swap this for a class with a no-arg constructor and
- * getters/setters; records work as DTOs but aren't natural JPA entities.
- */
-public record Customer(
-        String uniqueCustomerId,
-        String name,
-        String surname,
-        String email,
-        String contact
-) {
+import jakarta.persistence.*;
+
+import java.io.Serializable;
+
+@Entity
+@Table(name = "customer")
+public class Customer implements Serializable {
+
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private String uniqueCustomerId;
+        @Column(name = "name", nullable = false, length = 50)
+        private String name;
+        @Column(name = "surname", nullable = false, length = 50)
+        private String surname;
+        @Column(name = "email", nullable = false, length = 50)
+        private String email;
+        @Column(name = "contact", nullable = false, length = 50)
+        private String contact;
+
+        public Customer() {
+        }
+
+        public String getUniqueCustomerId() {
+                return uniqueCustomerId;
+        }
+
+        public void setUniqueCustomerId(String uniqueCustomerId) {
+                this.uniqueCustomerId = uniqueCustomerId;
+        }
+
+        public String getName() {
+                return name;
+        }
+
+        public void setName(String name) {
+                this.name = name;
+        }
+
+        public String getSurname() {
+                return surname;
+        }
+
+        public void setSurname(String surname) {
+                this.surname = surname;
+        }
+
+        public String getEmail() {
+                return email;
+        }
+
+        public void setEmail(String email) {
+                this.email = email;
+        }
+
+        public String getContact() {
+                return contact;
+        }
+
+        public void setContact(String contact) {
+                this.contact = contact;
+        }
 }

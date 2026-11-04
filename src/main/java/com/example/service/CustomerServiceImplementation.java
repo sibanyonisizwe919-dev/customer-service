@@ -1,9 +1,12 @@
 package com.example.service;
 
 import com.example.model.Customer;
+import com.example.persistance.CustomerRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -21,25 +24,30 @@ import java.util.concurrent.ConcurrentHashMap;
 @ApplicationScoped
 public class CustomerServiceImplementation implements CustomerService {
 
-    private final ConcurrentHashMap<String, Customer> customers = new ConcurrentHashMap<>();
+    @Inject
+    CustomerRepository customerRepository;
 
-    @PostConstruct
-    void init() {
-        // Seed some sample data — runs once after the bean is constructed.
-        store(new Customer("001", "Ada",   "Lovelace", "ada@example.com",   "+44 20 7946 0123"));
-        store(new Customer("002", "Alan",  "Turing",   "alan@example.com",  "+44 20 7946 0456"));
-        store(new Customer("003", "Grace", "Hopper",   "grace@example.com", "+1 203 555 0142"));
-    }
-
-    private void store(Customer customer) {
-        customers.put(customer.uniqueCustomerId(), customer);
+    public Optional<Customer> saveCustomer(Customer customer) {
+        Customer savedCustomer = customerRepository.save(customer);
+        return Optional.ofNullable(savedCustomer);
     }
 
     /** Look up a customer by their unique id; empty if not found. */
-    public Optional<Customer> findById(String id) {
-        if (id == null || id.isBlank()) {
+    public Optional<Customer> findById(Long id) {
+        Customer customer = customerRepository.findById(id);
+        if(customer==null){
             return Optional.empty();
         }
-        return Optional.ofNullable(customers.get(id));
+        return Optional.of(customer);
     }
+
+    public Optional<List<Customer>> getCustomers(){
+        List<Customer> customers = customerRepository.findAll();
+        if(customers.isEmpty()){
+            return Optional.empty();
+        }
+        return Optional.of(customers);
+    }
+
+
 }

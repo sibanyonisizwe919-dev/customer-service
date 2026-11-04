@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0"
+             xmlns="https://jakarta.ee"
+             xmlns:xsi="http://w3.org"
+             xsi:schemaLocation="https://jakarta.ee https://jakarta.ee/persistence_3_0.xsd">
+
+    <persistence-unit name="customerPU" transaction-type="JTA">
+        <!-- The JNDI name configured in your Application Server (e.g., WildFly, GlassFish, Payara) -->
+        <jta-data-source>jdbc/CustomerDS</jta-data-source>
+
+        <properties>
+
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <!-- Optional: Echo SQL commands to the server log for debugging -->
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
