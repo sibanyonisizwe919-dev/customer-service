@@ -8,65 +8,71 @@ import java.io.Serializable;
 @Table(name = "customer")
 public class Customer implements Serializable {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long uniqueCustomerId;
-        @Column(name = "name", nullable = false, length = 50)
-        private String name;
-        @Column(name = "surname", nullable = false, length = 50)
-        private String surname;
-        @Column(name = "email", nullable = false, length = 50)
-        private String email;
-        @Column(name = "contact", nullable = false, length = 50)
-        private String contact;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long uniqueCustomerId;
 
-        public Customer() {
-        }
+    @Column(name = "name", nullable = false, length = 50)
+    private String name;
 
-        public Long getUniqueCustomerId() {
-                return uniqueCustomerId;
-        }
+    @Column(name = "surname", nullable = false, length = 50)
+    private String surname;
 
-        public void setUniqueCustomerId(Long uniqueCustomerId) {
-                this.uniqueCustomerId = uniqueCustomerId;
-        }
-        public Long getId() {
-                return uniqueCustomerId;
-        }
+    @Column(name = "email", nullable = false, length = 50)
+    private String email;
 
-        public void setId(Long uniqueCustomerId) {
-                this.uniqueCustomerId = uniqueCustomerId;
-        }
+    @Column(name = "contact", nullable = false, length = 50)
+    private String contact;
 
-        public String getName() {
-                return name;
-        }
+    public Customer() {
+    }
 
-        public void setName(String name) {
-                this.name = name;
-        }
+    public Long getUniqueCustomerId() {
+        return uniqueCustomerId;
+    }
 
-        public String getSurname() {
-                return surname;
-        }
+    public void setUniqueCustomerId(Long uniqueCustomerId) {
+        this.uniqueCustomerId = uniqueCustomerId;
+    }
 
-        public void setSurname(String surname) {
-                this.surname = surname;
-        }
+    public Long getId() {
+        return uniqueCustomerId;
+    }
 
-        public String getEmail() {
-                return email;
-        }
+    public void setId(Long uniqueCustomerId) {
+        this.uniqueCustomerId = uniqueCustomerId;
+    }
 
-        public void setEmail(String email) {
-                this.email = email;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public String getContact() {
-                return contact;
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        public void setContact(String contact) {
-                this.contact = contact;
-        }
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
 }

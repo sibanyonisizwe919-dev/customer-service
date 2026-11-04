@@ -1,5 +1,4 @@
 /* Dedicated stylesheet for the Customer Service home page. */
-
 body {
     font-family: system-ui, Arial, sans-serif;
     max-width: 720px;
@@ -10,6 +9,9 @@ body {
 
 h1 {
     margin-bottom: 0.25rem;
+    border: #666666 2px solid;
+    padding:10px;
+    border-radius: 5px
 }
 
 .subtitle {

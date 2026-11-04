@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  JPA persistence unit. The container-managed EntityManager in the repository
+  (@PersistenceContext(unitName = "customerPU")) resolves to this unit, which
+  uses the datasource declared in WEB-INF/glassfish-resources.xml (bound to the
+  JNDI name java:app/jdbc/customerDb).
+
+  Switching databases only requires editing glassfish-resources.xml; this file
+  stays the same regardless of where the database lives.
+-->
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+                                 https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <persistence-unit name="customerPU" transaction-type="JTA">
+        <jta-data-source>java:app/jdbc/customerDb</jta-data-source>
+        <properties>
+            <property name="eclipselink.logging.level" value="INFO"/>
+            <property name="eclipselink.ddl-generation" value="none"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>

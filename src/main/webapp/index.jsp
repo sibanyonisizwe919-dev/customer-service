@@ -19,6 +19,8 @@
         <li><a href="${pageContext.request.contextPath}/api/customer-details/1">GET /api/customer-details/1</a> &mdash; fetch customer by id</li>
     </ul>
 
+    <p><a href="${pageContext.request.contextPath}/customers.jsp">Browse customers &rarr;</a> &mdash; table view that opens a card popup per customer.</p>
+
     <p>Rendered on the server at <%= new java.util.Date() %>.</p>
 
     <footer>customer-service &middot; Jakarta EE 10</footer>
