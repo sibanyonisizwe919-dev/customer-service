@@ -10,7 +10,7 @@ public class Customer implements Serializable {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private String uniqueCustomerId;
+        private Long uniqueCustomerId;
         @Column(name = "name", nullable = false, length = 50)
         private String name;
         @Column(name = "surname", nullable = false, length = 50)
@@ -23,11 +23,18 @@ public class Customer implements Serializable {
         public Customer() {
         }
 
-        public String getUniqueCustomerId() {
+        public Long getUniqueCustomerId() {
                 return uniqueCustomerId;
         }
 
-        public void setUniqueCustomerId(String uniqueCustomerId) {
+        public void setUniqueCustomerId(Long uniqueCustomerId) {
+                this.uniqueCustomerId = uniqueCustomerId;
+        }
+        public Long getId() {
+                return uniqueCustomerId;
+        }
+
+        public void setId(Long uniqueCustomerId) {
                 this.uniqueCustomerId = uniqueCustomerId;
         }
 
